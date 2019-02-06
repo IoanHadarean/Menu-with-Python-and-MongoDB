@@ -1,0 +1,7 @@
+sudo apt-get install build-essential python-dev
+
+sudo pip3 install pymongo
+
+export MONGO_URI=mongodb://root:1403Goagl@ds015774.mlab.com:15774/mytestdb
+
+echo $MONGO_URI
