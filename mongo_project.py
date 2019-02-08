@@ -1,5 +1,6 @@
 import pymongo
 import os
+import env
 
 MONGODB_URI = os.getenv("MONGO_URI")
 DBS_NAME = "mytestdb"
@@ -22,13 +23,33 @@ def show_menu():
     
     option = input("Enter option: ")
     return option
+    
+def add_record():
+    print("")
+    first = input("Enter first name > ")
+    last = input("Enter last name > ")
+    dob = input("Enter date of birth > ")
+    gender = input("Enter gender > ")
+    hair_colour = input("Enter hair colour > ")
+    occupation = input("Enter occupation > ")
+    nationality = input("Enter nationality > ")
+    
+    new_doc = {'first': first.lower(), 'last': last.lower(), 'dob': dob,
+        'gender': gender, 'hair_colour': hair_colour, 'occupation': 
+        occupation, 'nationality': nationality}
+        
+    try:
+        coll.insert(new_doc)
+        print("")
+        print("Document inserted")
+    except:
+        print("Error accessing the database")
 
- 
 def main_loop():
     while True:
         option = show_menu()
         if option == "1":
-            print("You have selected option 1")
+            add_record()
         elif option == "2":
             print("You have selected option 2")
         elif option == "3":
@@ -47,5 +68,6 @@ conn = mongo_connect(MONGODB_URI)
 
 #pass the connection name to a variable
 coll = conn[DBS_NAME][COLLECTION_NAME]
+
 main_loop()
             

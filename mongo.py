@@ -1,4 +1,5 @@
 import pymongo
+import env
 import os
 
 MONGODB_URI = os.getenv("MONGO_URI")
