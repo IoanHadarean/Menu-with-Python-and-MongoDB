@@ -81,7 +81,7 @@ def edit_record():
                 # print(update_doc)
                 
                 if update_doc[k] == "":
-                   update_doc[k] = v
+                    update_doc[k] = v
                     
         try:
             coll.update_one(doc, {'$set': update_doc})
